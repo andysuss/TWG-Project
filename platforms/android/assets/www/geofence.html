@@ -1,0 +1,31 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">GeoFence</div>
+    </ons-toolbar>
+        
+      <div class="settings-header">Current position</div>
+
+      <ons-list modifier="inset" class="settings-list">
+        <ons-list-item style="border-bottom: solid 1px #ddd">
+          Latitude
+          <span id="lat" class="list-item-note lucent">...</span>
+        </ons-list-item>
+
+        <ons-list-item>
+          Longitude
+          <span id="lng" class="list-item-note lucent">...</span>
+        </ons-list-item>
+      </ons-list>
+      <div style="padding: 10px">
+      <p>Watching your position...</p>
+
+       <ons-row>
+            <ons-col>
+                <div style="margin: 0 5px 0 5px"><ons-button ng-click="" modifier="large" class="button button--outline">Cancel</ons-button></div>
+            </ons-col>
+            <ons-col>
+                <div style="margin: 0 5px 0 5px"><ons-button ng-click="" modifier="large" class="button">Confirm</ons-button></div>
+            </ons-col>
+       </ons-row>
+      </div>
+</ons-page>

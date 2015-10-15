@@ -1,0 +1,21 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">Home</div>
+    </ons-toolbar>
+    <div class="content">
+        <form class="text-center loginForm">
+            <ul class="list loginList">
+                <li class="list__item">
+                    <input type="text" id="email" class="text-input text-input--transparent" style="width:100%; margin-top:4px;" placeholder="email">
+                </li>
+                <li class="list__item">
+                    <input type="password" id="psswd" class="text-input text-input--transparent" style="width:100%; margin-top:4px;" placeholder="password">
+                </li>
+            </ul>
+            <div class="container">
+            <ons-button modifier="large" ng-click="loginFrm()" class="button">Login</ons-button>
+            <ons-button modifier="large--cta">Register</ons-button>
+            </div>
+        </form>
+    </div>
+</ons-page>

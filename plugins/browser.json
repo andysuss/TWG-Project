@@ -1,0 +1,89 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"browser-package\" value=\"Camera\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "com.plotprojects.cordova": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        }
+    }
+}

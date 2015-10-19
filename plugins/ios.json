@@ -7,13 +7,81 @@
         "files": {
             "framework": {
                 "parents": {
-                    "CoreLocation.framework": [
+                    "libsqlite3.dylib": [
                         {
                             "xml": false,
                             "count": 1
-                        },
+                        }
+                    ],
+                    "CoreLocation.framework": [
                         {
-                            "xml": "false",
+                            "xml": false,
+                            "count": 4
+                        }
+                    ],
+                    "MessageUI.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": true,
+                            "count": 2
+                        }
+                    ],
+                    "CoreGraphics.framework": [
+                        {
+                            "xml": false,
+                            "count": 5
+                        }
+                    ],
+                    "ImageIO.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "AssetsLibrary.framework": [
+                        {
+                            "xml": false,
+                            "count": 3
+                        }
+                    ],
+                    "MobileCoreServices.framework": [
+                        {
+                            "xml": false,
+                            "count": 3
+                        }
+                    ],
+                    "AVFoundation.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "AddressBook.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "AddressBookUI.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "CoreMotion.framework": [
+                        {
+                            "xml": false,
                             "count": 1
                         }
                     ]
@@ -23,7 +91,83 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Capture\"><param name=\"ios-package\" value=\"CDVCapture\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Battery\"><param name=\"ios-package\" value=\"CDVBattery\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Contacts\"><param name=\"ios-package\" value=\"CDVContacts\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\"><param name=\"ios-package\" value=\"CDVSound\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"ios-package\" value=\"CDVGlobalization\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Accelerometer\"><param name=\"ios-package\" value=\"CDVAccelerometer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PlotCordovaPlugin\"><param name=\"ios-package\" value=\"PlotCordovaPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -31,10 +175,16 @@
             },
             "*-Info.plist": {
                 "parents": {
+                    "NSLocationAlwaysUsageDescription": [
+                        {
+                            "xml": "<string>Your location is used to instantly inform you when you are near a location that is interesting to you.</string>",
+                            "count": 1
+                        }
+                    ],
                     "NSLocationWhenInUseUsageDescription": [
                         {
                             "xml": "<string />",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -42,9 +192,64 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.phonegap.asollc"
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "com.plotprojects.cordova": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        }
+    }
 }

@@ -49,7 +49,7 @@
       </dict>
     </dict>
     <key>CFBundleIdentifier</key>
-    <string>com.phonegap.asollc</string>
+    <string>com.coolappz.geofence</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -173,5 +173,12 @@
     </array>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is used to instantly inform you when you are near a location that is interesting to you.</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
   </dict>
 </plist>

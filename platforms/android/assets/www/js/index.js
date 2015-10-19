@@ -11,13 +11,35 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
         if( mytab.getActiveTabIndex() === 0 ){
             geo.init();
         }
         mytab.on("postchange", function(e){
-            if( mytab.getActiveTabIndex() === 0){
+            if( mytab.getActiveTabIndex() === 1){
                 geo.init();
+            } else if( mytab.getActiveTabIndex() === 3){
+                window.open("http://www.google.com/","_system");
+            } else if( mytab.getActiveTabIndex() === 0){
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    crossDomain: true,                   
+                    url: 'http://twgverify.asolllc.net/api/visitdata',
+                    success: function (data)
+                    {
+                        console.log(data);
+                    },
+                    error: function (data)
+                    {
+                        ons.notification.alert({
+                            message: 'An error occured, please try again later',
+                            title: 'Error',
+                            buttonLabel: 'OK',
+                            animation: 'default',
+                            callback: function() {}
+                        });                        
+                    }
+                });                
             }
         });
     },

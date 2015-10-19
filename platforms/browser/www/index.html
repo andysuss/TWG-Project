@@ -1,0 +1,118 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+?>
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-csp>
+    <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+
+    <!-- JS dependencies (order matters!) -->
+    <script src="js/libs/angular/angular.js"></script>
+    <script src="js/libs/jquery/jquery.js"></script>
+    <script src="js/libs/onsen/js/onsenui.js"></script>
+
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="js/libs/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="js/libs/onsen/css/onsen-css-components-blue-basic-theme.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <title>App title</title>
+    <script>
+        var my_app = angular.module('app', ['onsen']);
+
+        my_app.controller('AppController', [ '$scope', '$http', function ($scope, $http) {
+            $scope.doSomething = function () {
+                ons.notification.alert({ message: 'tapped' });
+            };
+        }]);
+    </script>
+    <style>
+        .list-item-note {
+          position: absolute;
+          right: 10px;
+          top: 0px;
+          font-size: 14px;
+        }
+
+        .list-item-note > .notification {
+          margin-top: 12px;
+        }
+
+        .lucent {
+          opacity: 0.4;
+        }     
+        
+        .settings-header {
+          font-weight: 500;
+          font-size: 14px;
+          opacity: 0.4;
+          padding: 10px 0 0px 10px;
+          margin-top: 10px;
+          margin-bottom: -4px;
+        }
+
+        .settings-list {
+          margin-top: 15px;
+        }
+        
+        .switch__input:checked + .switch__toggle
+        {
+            background-color: #1CC5B3
+        }
+    </style>
+</head>
+
+<body ng-controller="AppController">
+    <!-- Cordova reference -->
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/geo.js"></script>
+    <!-- -->
+
+    <ons-tabbar var="mytab">
+        
+        <ons-tab active="true" page="shipments.html">
+            <div class="tab">
+                <ons-icon icon="ion-gear-a" class="tab-icon" style="color:white"></ons-icon>
+                <div class="tab-label">Shipments</div>
+            </div>
+        </ons-tab>
+        
+        <ons-tab page="geofence.html">
+            <div class="tab">
+                <ons-icon icon="ion-gear-a" class="tab-icon" style="color:white"></ons-icon>
+                <div class="tab-label">Geofence</div>
+            </div>
+        </ons-tab>
+
+        <ons-tab page="layouts.html">
+            <div class="tab">
+                <ons-icon icon="ion-gear-a" class="tab-icon" style="color:white"></ons-icon>
+                <div class="tab-label">Layouts</div>
+            </div>
+        </ons-tab>
+
+        <ons-tab>
+            <div class="tab">
+                <ons-icon icon="ion-gear-a" class="tab-icon" style="color:white"></ons-icon>
+                <div class="tab-label">Survey</div>
+            </div>
+        </ons-tab>
+    </ons-tabbar>
+<script type="text/javascript">
+document.addEventListener("deviceready", deviceReady, true);
+function deviceReady() {
+  var plot = cordova.require("cordova/plugin/plot");
+  plot.init({});
+};
+</script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+</html>

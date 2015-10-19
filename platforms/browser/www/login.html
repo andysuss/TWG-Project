@@ -1,0 +1,117 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
+?>
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-csp>
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <script src="js/libs/angular/angular.js"></script>
+    <script src="js/libs/jquery/jquery.js"></script>
+    <script src="js/libs/onsen/js/onsenui.js"></script>
+    <link rel="stylesheet" href="js/libs/onsen/css/onsenui.css" />
+    <link rel="stylesheet" href="js/libs/onsen/css/onsen-css-components-blue-basic-theme.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Login</title>
+    <script>
+        var my_app = angular.module('app', ['onsen']);
+
+        my_app.controller('AppController', ['$scope', '$http', function ($scope, $http) {
+            $scope.doSomething = function () {
+                ons.notification.alert({ message: 'tapped' });
+            };
+
+            $scope.loginFrm = function ()
+            {
+                var btn = document.getElementById("lg_btn");
+                var formData = {
+                    Email: $("#email").val(),
+                    Password: $("#psswd").val()
+                };
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    crossDomain: true,
+                    url: 'http://twgverify.asolllc.net/api/logins',
+                    data: formData,
+                    success: function (data)
+                    {
+                        console.log(data);
+                        if(data.Success === "true"){
+                            window.localStorage.setItem("asollc_app_credentials", JSON.stringify(data));
+                            window.location = "index.html";
+                        } else {
+                            ons.notification.alert({
+                                message: 'Please verify your credentials and try again',
+                                title: 'Login failed',
+                                buttonLabel: 'OK',
+                                animation: 'default',
+                                callback: function() {
+                                    btn.innerHTML = "Login";
+                                    $("#email").val("");
+                                    $("#psswd").val("");
+                                }
+                            });
+                        }
+                    },
+                    error: function (data)
+                    {
+                        console.log(data);
+                    }
+                });
+                btn.innerHTML = '<ons-icon icon="spinner" spin="true" id="spnr" size="16px" fixed-width="false" style="color: white;"></ons-icon>';
+                ons.compile(btn);
+            };
+        }]);
+    </script>
+    <style>
+        .login-form {
+          text-align: center;
+          width: 80%;
+          margin: 60px auto 0;
+        }
+
+        input[type=email], input[type=password] {
+          display: block;
+          width: 100%;
+          margin: 0 auto;
+          outline: none;
+          padding-top: 24px;
+          padding-bottom: 24px;
+        }
+
+        .login-button {
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .forgot-password {
+          display: block;
+          margin: 8px auto 0 auto;
+          font-size: 14px;
+        }        
+    </style>
+</head>
+
+<body ng-controller="AppController">
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    
+    <ons-page>
+
+      <div class="login-form">
+
+        <input type="email" id="email" class="text-input--underbar" placeholder="Email" value=""/>
+        <input type="password" id="psswd" class="text-input--underbar" placeholder="Password" value=""/>
+        <br><br>
+        <ons-button modifier="large" ng-click="loginFrm()" id="lg_btn" class="login-button" style="height:46px">Login</ons-button>
+      </div>
+
+    </ons-page>
+
+</body>
+</html>

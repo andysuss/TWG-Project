@@ -20,6 +20,7 @@
 #import "CDVCamera.h"
 #import "CDVJpegHeaderWriter.h"
 #import "UIImage+CropScaleOrientation.h"
+#import <Cordova/NSData+Base64.h>
 #import <ImageIO/CGImageProperties.h>
 #import <AssetsLibrary/ALAssetRepresentation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -30,10 +31,6 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <objc/message.h>
 
-#ifndef __CORDOVA_4_0_0
-    #import <Cordova/NSData+Base64.h>
-#endif
-
 #define CDV_PHOTO_PREFIX @"cdv_photo_"
 
 static NSSet* org_apache_cordova_validArrowDirections;
@@ -41,20 +38,9 @@ static NSSet* org_apache_cordova_validArrowDirections;
 static NSString* toBase64(NSData* data) {
     SEL s1 = NSSelectorFromString(@"cdv_base64EncodedString");
     SEL s2 = NSSelectorFromString(@"base64EncodedString");
-    SEL s3 = NSSelectorFromString(@"base64EncodedStringWithOptions:");
-    
-    if ([data respondsToSelector:s1]) {
-        NSString* (*func)(id, SEL) = (void *)[data methodForSelector:s1];
-        return func(data, s1);
-    } else if ([data respondsToSelector:s2]) {
-        NSString* (*func)(id, SEL) = (void *)[data methodForSelector:s2];
-        return func(data, s2);
-    } else if ([data respondsToSelector:s3]) {
-        NSString* (*func)(id, SEL, NSUInteger) = (void *)[data methodForSelector:s3];
-        return func(data, s3, 0);
-    } else {
-        return nil;
-    }
+    SEL realSel = [data respondsToSelector:s1] ? s1 : s2;
+    NSString* (*func)(id, SEL) = (void *)[data methodForSelector:realSel];
+    return func(data, realSel);
 }
 
 @implementation CDVPictureOptions
@@ -346,7 +332,7 @@ static NSString* toBase64(NSData* data) {
             break;
         case EncodingTypeJPEG:
         {
-            if ((options.allowsEditing == NO) && (options.targetSize.width <= 0) && (options.targetSize.height <= 0) && (options.correctOrientation == NO) && (([options.quality integerValue] == 100) || (options.sourceType != UIImagePickerControllerSourceTypeCamera))){
+            if ((options.allowsEditing == NO) && (options.targetSize.width <= 0) && (options.targetSize.height <= 0) && (options.correctOrientation == NO)){
                 // use image unedited as requested , don't resize
                 data = UIImageJPEGRepresentation(image, 1.0);
             } else {
@@ -422,7 +408,7 @@ static NSString* toBase64(NSData* data) {
     return (scaledImage == nil ? image : scaledImage);
 }
 
-- (void)resultForImage:(CDVPictureOptions*)options info:(NSDictionary*)info completion:(void (^)(CDVPluginResult* res))completion
+- (CDVPluginResult*)resultForImage:(CDVPictureOptions*)options info:(NSDictionary*)info
 {
     CDVPluginResult* result = nil;
     BOOL saveToPhotoAlbum = options.saveToPhotoAlbum;
@@ -431,28 +417,10 @@ static NSString* toBase64(NSData* data) {
     switch (options.destinationType) {
         case DestinationTypeNativeUri:
         {
-            NSURL* url = [info objectForKey:UIImagePickerControllerReferenceURL];
+            NSURL* url = (NSURL*)[info objectForKey:UIImagePickerControllerReferenceURL];
+            NSString* nativeUri = [[self urlTransformer:url] absoluteString];
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:nativeUri];
             saveToPhotoAlbum = NO;
-            // If, for example, we use sourceType = Camera, URL might be nil because image is stored in memory.
-            // In this case we must save image to device before obtaining an URI.
-            if (url == nil) {
-                image = [self retrieveImage:info options:options];
-                ALAssetsLibrary* library = [ALAssetsLibrary new];
-                [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)(image.imageOrientation) completionBlock:^(NSURL *assetURL, NSError *error) {
-                    CDVPluginResult* resultToReturn = nil;
-                    if (error) {
-                        resultToReturn = [CDVPluginResult resultWithStatus:CDVCommandStatus_IO_EXCEPTION messageAsString:[error localizedDescription]];
-                    } else {
-                        NSString* nativeUri = [[self urlTransformer:assetURL] absoluteString];
-                        resultToReturn = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:nativeUri];
-                    }
-                    completion(resultToReturn);
-                }];
-                return;
-            } else {
-                NSString* nativeUri = [[self urlTransformer:url] absoluteString];
-                result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:nativeUri];
-            }
         }
             break;
         case DestinationTypeFileUri:
@@ -478,6 +446,7 @@ static NSString* toBase64(NSData* data) {
         {
             image = [self retrieveImage:info options:options];
             NSData* data = [self processImage:image info:info options:options];
+            
             if (data)  {
                 result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:toBase64(data)];
             }
@@ -491,8 +460,8 @@ static NSString* toBase64(NSData* data) {
         ALAssetsLibrary* library = [ALAssetsLibrary new];
         [library writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)(image.imageOrientation) completionBlock:nil];
     }
-
-    completion(result);
+    
+    return result;
 }
 
 - (CDVPluginResult*)resultForVideo:(NSDictionary*)info
@@ -511,14 +480,13 @@ static NSString* toBase64(NSData* data) {
         
         NSString* mediaType = [info objectForKey:UIImagePickerControllerMediaType];
         if ([mediaType isEqualToString:(NSString*)kUTTypeImage]) {
-            [self resultForImage:cameraPicker.pictureOptions info:info completion:^(CDVPluginResult* res) {
-                [weakSelf.commandDelegate sendPluginResult:res callbackId:cameraPicker.callbackId];
-                weakSelf.hasPendingOperation = NO;
-                weakSelf.pickerController = nil;
-            }];
+            result = [self resultForImage:cameraPicker.pictureOptions info:info];
         }
         else {
             result = [self resultForVideo:info];
+        }
+        
+        if (result) {
             [weakSelf.commandDelegate sendPluginResult:result callbackId:cameraPicker.callbackId];
             weakSelf.hasPendingOperation = NO;
             weakSelf.pickerController = nil;

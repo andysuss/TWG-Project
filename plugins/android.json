@@ -75,6 +75,10 @@
                         {
                             "xml": "<feature name=\"PlotCordovaPlugin\"><param name=\"android-package\" value=\"com.plotprojects.cordova.PlotCordovaPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -234,6 +238,9 @@
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "com.plotprojects.cordova": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         }
     },

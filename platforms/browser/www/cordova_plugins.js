@@ -1,18 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "id": "cordova-plugin-device.device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
-        "id": "cordova-plugin-device.DeviceProxy",
-        "runs": true
-    },
-    {
         "file": "plugins/cordova-plugin-vibration/www/vibration.js",
         "id": "cordova-plugin-vibration.notification",
         "merges": [
@@ -348,6 +336,21 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/src/browser/InAppBrowserProxy.js",
+        "id": "cordova-plugin-inappbrowser.InAppBrowserProxy",
+        "merges": [
+            ""
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -502,12 +505,11 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-device": "1.0.2-dev",
     "cordova-plugin-vibration": "2.0.0-dev",
     "cordova-plugin-splashscreen": "3.0.0-dev",
-    "cordova-plugin-camera": "1.2.1-dev",
+    "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-media-capture": "1.0.2-dev",
-    "cordova-plugin-file-transfer": "1.3.1-dev",
+    "cordova-plugin-file-transfer": "1.3.0",
     "cordova-plugin-console": "1.0.2-dev",
     "cordova-plugin-battery-status": "1.1.1-dev",
     "cordova-plugin-contacts": "1.1.1-dev",
@@ -520,6 +522,8 @@ module.exports.metadata =
     "cordova-plugin-device-orientation": "1.0.2-dev",
     "cordova-plugin-whitelist": "1.0.0",
     "com.plotprojects.cordova": "1.11.1",
+    "cordova-plugin-inappbrowser": "1.0.1",
+    "sk.kcorp.cordova.ios-security": "0.3.0",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

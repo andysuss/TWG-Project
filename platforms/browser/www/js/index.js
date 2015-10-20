@@ -11,15 +11,26 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
+        var plot = cordova.require("cordova/plugin/plot");
+        plot.init({});
+        plot.enable();        
         if( mytab.getActiveTabIndex() === 0 ){
             geo.init();
         }
         mytab.on("postchange", function(e){
             if( mytab.getActiveTabIndex() === 1){
+                
                 geo.init();
+                $("#pictk").click(function(){app.pictk();});
+                
             } else if( mytab.getActiveTabIndex() === 3){
-                window.open("http://www.google.com/","_system");
+                
+                // Survey URL goes here
+                var url = "http://www.google.com/";
+                var ref = cordova.InAppBrowser.open(encodeURI(url),"_blank", "location=no,toolbar=no");
+                
             } else if( mytab.getActiveTabIndex() === 0){
+                
                 $.ajax({
                     type: 'GET',
                     dataType: 'json',
@@ -39,18 +50,51 @@ var app = {
                             callback: function() {}
                         });                        
                     }
-                });                
+                });
+                
             }
         });
     },
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        //console.log('Received Event: ' + id);
-    }
+    pictk:function(){
+        cameraOptions = { 
+            quality: 90,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: false,
+            encodingType: Camera.EncodingType.JPEG,
+            saveToPhotoAlbum: false 
+        };
+        navigator.camera.getPicture(function(data) {
+            app.onCapture(data);
+        }, function(err) {
+            app.onFail(err);
+        }, cameraOptions);
+    },
+    onCapture:function(data){
+        // handle fileupload succes
+        var success = function(d){
+            app.clearCache();
+            ons.notification.alert({message: 'File uploaded succesfully', title: 'File uploaded', buttonLabel: 'OK', animation: 'default'});            
+        };
+        // handle upload fail
+        var fail = function(e){
+            app.clearCache();
+            ons.notification.alert({message: 'An error occured, please try again later', title: 'Error', buttonLabel: 'OK', animation: 'default'});            
+        };
+        // upload URL change here
+        var upload_uri = "http://demo3.inheritedarts.com/geofence/uploads/upload.php";
+        // upload file
+        var ft = new FileTransfer();
+        var options = new FileUploadOptions();
+        options.fileKey = "img";
+        options.fileName = data.substr(data.lastIndexOf('/')+1);
+        options.mimeType= "image/jpeg";
+        ft.upload( data, upload_uri, success, fail, options);
+    },
+    onFail:function(err){
+        
+    },
+    clearCache:function() {
+        navigator.camera.cleanup();
+    }    
 };

@@ -274,3 +274,7 @@ h1
 {
     padding: 20px;
 }
+
+.navigation-bar__title, .navigation-bar {
+    border-bottom: 0px !important;
+}

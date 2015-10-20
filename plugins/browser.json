@@ -9,10 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Camera\"><param name=\"browser-package\" value=\"Camera\" /></feature>",
                             "count": 1
                         },
@@ -26,9 +22,6 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
@@ -78,6 +71,12 @@
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "com.plotprojects.cordova": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "sk.kcorp.cordova.ios-security": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         }
     },

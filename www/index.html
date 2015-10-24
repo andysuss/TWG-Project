@@ -46,8 +46,8 @@
 
         .lucent {
           opacity: 0.4;
-        }     
-        
+        }
+
         .settings-header {
           font-weight: 500;
           font-size: 14px;
@@ -60,10 +60,16 @@
         .settings-list {
           margin-top: 15px;
         }
-        
+
         .switch__input:checked + .switch__toggle
         {
             background-color: #1CC5B3
+        }
+        #lyt_ctr {
+            padding: 10px
+        }
+        .lyt_img{
+            max-width: 300px;
         }
     </style>
 </head>
@@ -76,14 +82,14 @@
     <!-- -->
 
     <ons-tabbar var="mytab">
-        
+
         <ons-tab active="true" page="shipments.html">
             <div class="tab">
                 <ons-icon icon="ion-gear-a" class="tab-icon" style="color:white"></ons-icon>
                 <div class="tab-label">Shipments</div>
             </div>
         </ons-tab>
-        
+
         <ons-tab page="geofence.html">
             <div class="tab">
                 <ons-icon icon="ion-wifi" class="tab-icon" style="color:white"></ons-icon>
@@ -109,17 +115,21 @@
     <script type="text/javascript">
         app.initialize();
     </script>
-    
+
     <script type="text/ons-template" id="alert.html">
         <ons-alert-dialog animation="default">
             <br/><br/>
             <div class="alert-dialog-content center">
-                Uploading 
+                Uploading
                 <ons-icon icon="spinner" spin="true" size="16px" fixed-width="false"></ons-icon>
             </div>
             <br/><br/>
         </ons-alert-dialog>
     </script>
-    
+    <ons-modal var="modal">
+                <ons-icon icon="ion-load-c" spin="true"></ons-icon>
+                <br>
+                <br>Loading content
+    </ons-modal>
 </body>
 </html>

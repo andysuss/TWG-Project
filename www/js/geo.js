@@ -8,7 +8,7 @@ window.geo = {
         this.get();
     },
     options:{
-        maximumAge: 3000, 
+        maximumAge: 3000,
         timeout: 5000,
         enableHighAccuracy: true
     },
@@ -26,6 +26,6 @@ window.geo = {
             buttonLabel: 'OK',
             animation: 'default',
             callback: function() {}
-        });        
+        });
     }
 };

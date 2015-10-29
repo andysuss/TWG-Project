@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.geofence" version="1.0.0">
-    <name>geofence</name>
+    <name>POS Verification</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -20,6 +20,10 @@
     <allow-navigation href="http://*/*"/>
     <allow-navigation href="https://*/*"/>
     <allow-navigation href="data:*"/>
+    <gap:splash src="splash.png" />
+    <gap:splash src="Default@2x.png" gap:platform="ios" width="640" height="960" />
+    <gap:splash src="Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
+    <icon src="icon.png" />
     <platform name="android">
         <allow-intent href="market:*"/>
     </platform>

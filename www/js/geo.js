@@ -8,15 +8,17 @@ window.geo = {
         this.get();
     },
     options:{
-        maximumAge: 3000,
-        timeout: 5000,
-        enableHighAccuracy: true
+        maximumAge: 90000,
+        timeout: 90000,
+        enableHighAccuracy: false
     },
     get:function(){
         navigator.geolocation.getCurrentPosition( geo.success, geo.error, geo.options);
     },
     success:function(position){
         $("#lat").text( position.coords.latitude );
+        window.localStorage.setItem("asollc_app_lat", position.coords.latitude);
+        window.localStorage.setItem("asollc_app_long", position.coords.longitude);
         $("#lng").text( position.coords.longitude);
     },
     error:function(er){

@@ -20,10 +20,6 @@
     <allow-navigation href="http://*/*"/>
     <allow-navigation href="https://*/*"/>
     <allow-navigation href="data:*"/>
-    <gap:splash src="splash.png" />
-    <gap:splash src="Default@2x.png" gap:platform="ios" width="640" height="960" />
-    <gap:splash src="Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
-    <icon src="icon.png" />
     <platform name="android">
         <allow-intent href="market:*"/>
     </platform>

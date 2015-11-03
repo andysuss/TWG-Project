@@ -95,10 +95,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Battery\"><param name=\"ios-package\" value=\"CDVBattery\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
                             "count": 1
                         },
@@ -108,10 +104,6 @@
                         },
                         {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Contacts\"><param name=\"ios-package\" value=\"CDVContacts\" /></feature>",
                             "count": 1
                         },
                         {
@@ -201,16 +193,10 @@
         "com.plotprojects.cordova": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
-        "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-contacts": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "cordova-plugin-device-motion": {

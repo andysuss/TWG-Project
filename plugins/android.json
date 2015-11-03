@@ -9,15 +9,7 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"PlotCordovaPlugin\"><param name=\"android-package\" value=\"com.plotprojects.cordova.PlotCordovaPlugin\" /></feature>",
                             "count": 1
                         },
                         {
@@ -25,43 +17,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Battery\"><param name=\"android-package\" value=\"org.apache.cordova.batterystatus.BatteryListener\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Contacts\"><param name=\"android-package\" value=\"org.apache.cordova.contacts.ContactManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Accelerometer\"><param name=\"android-package\" value=\"org.apache.cordova.devicemotion.AccelListener\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
                             "count": 1
                         },
                         {
@@ -69,15 +25,47 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"PlotCordovaPlugin\"><param name=\"android-package\" value=\"com.plotprojects.cordova.PlotCordovaPlugin\" /></feature>",
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -86,10 +74,6 @@
             "AndroidManifest.xml": {
                 "parents": {
                     "/manifest": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 2
-                        },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
                             "count": 1
@@ -101,52 +85,10 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />",
                             "count": 1
-                        }
-                    ],
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 5
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
                             "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_CONTACTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 2
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
                         }
                     ],
                     "/manifest/application": [
@@ -170,6 +112,40 @@
                             "xml": "<provider android:authorities=\"com.coolappz.geofence.plot.debuglogprovider\" android:exported=\"true\" android:name=\"com.plotprojects.retail.android.DebugLogProvider\" />",
                             "count": 1
                         }
+                    ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 5
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -186,67 +162,60 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-splashscreen": {
+        "com.plotprojects.cordova": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-contacts": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-globalization": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "cordova-plugin-device-motion": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
-        "cordova-plugin-device-orientation": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.coolappz.geofence"
+        },
+        "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         },
-        "com.plotprojects.cordova": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        },
-        "cordova-plugin-inappbrowser": {
+        "sk.kcorp.cordova.ios-security": {
             "PACKAGE_NAME": "com.coolappz.geofence"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.coolappz.geofence"
-        }
-    }
+    "dependent_plugins": {}
 }

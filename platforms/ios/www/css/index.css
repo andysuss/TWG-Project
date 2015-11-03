@@ -87,6 +87,13 @@ h1
     padding: 2px 0px;
 }
 
+/*.center*/
+/*{*/
+    /*margin: 0 auto !important;*/
+    /*text-align: center !important;*/
+
+/*}*/
+
 .event.listening
 {
     background-color: #333333;

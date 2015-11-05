@@ -40,6 +40,9 @@ var app = {
 
             } else if( mytab.getActiveTabIndex() === 3){
 
+                var ref = window.open( 'http://twgverify.asolllc.net/survey.aspx?id='+user_data.GUID, '_blank', 'EnableViewPortScale=yes' );
+                ref.addEventListener( 'loadstart', function () { } );
+
             } else if( mytab.getActiveTabIndex() === 0){
 
                 app.shp_tab();
@@ -71,7 +74,7 @@ var app = {
                 var ls = document.getElementById('shp_ls');
                 var html = '';
                 $.each(data, function(i, v){
-                    html +=  '<ons-list-item modifier="chevron" class="list-item-container"><div class="list-item-right"><div class="list-item-content"><div class="name">'+v.Item+'</div><div>Quantity: '+v.CaseQty+'</div><div class="date">Location Id: '+lastLocationData.locationId+'</div><div class="lucent date">'+v.Shipdate.toString().substr(0, v.Shipdate.lastIndexOf("T"))+'</div></div></div></ons-list-item>';
+                    html +=  '<ons-list-item class="list-item-container"><div class="list-item-right"><div class="list-item-content"><div class="name" style="border-bottom: 1px solid #ddd">'+v.Item+'</div><div style="border-bottom: 1px solid #ddd">Quantity: '+v.CaseQty+'</div><div class="date" style="border-bottom: 1px solid #ddd">Location Id: '+lastLocationData.locationId+'</div><div class="lucent date">'+v.Shipdate.toString().substr(0, v.Shipdate.lastIndexOf("T"))+'</div></div></div></ons-list-item>';
                 });
                 ls.innerHTML = html;
                 ons.compile(ls);

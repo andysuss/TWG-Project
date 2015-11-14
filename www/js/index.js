@@ -13,6 +13,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
+
         var plot = cordova.require("cordova/plugin/plot");
         plot.init({});
         plot.enable();
@@ -27,20 +28,53 @@ var app = {
         };
 
         if( mytab.getActiveTabIndex() === 0 ){
+
             app.shp_tab();
         }
+        $(document).on('change','#locations',function(){
+            var drpLocation = $('#locations').val() ;
+            if(drpLocation != ""){
+            lastLocationData.locationId = drpLocation;
+                $.each(imagesArray, function(value, key) {
+                    if (key.Id == drpLocation){
+                        imageUrl = key.Manager;
+                        lastLocationData.img =  "https://docs.google.com/gview?embedded=true&url=http://verifyimages.azurewebsites.net/stores/" + imageUrl
+                        console.log(imageUrl);
+                    }
+                });
+            }
+        });
         mytab.on("postchange", function(e){
             if( mytab.getActiveTabIndex() === 1){
-
+                imagesArray = [];
                 var myData = window.localStorage.getItem("asollc_app_credentials")
-                console.log(myData);
+                //console.log(myData);
 
+                $.ajax({
+                    type: 'GET',
+                    crossDomain: true,
+                    dataType: "json",
+                    url: 'http://twgverify.asolllc.net/api/racetraclocations',
+                    success: function(data){
+                        var $el = $("#locations");
+                        $el.empty();
+                        $el.append($("<option></option>")
+                            .attr("value", '').text('Please Select'));
+                        $.each(data, function(value, key) {
+                            $el.append($("<option></option>")
+                                .attr("value", key.Id).text(key.Address));
+                            imagesArray.push(key);
+                        });
+
+                        //console.log(data)
+                    }
+                });
                 geo.init();
                 $("#pictk").click(function(){app.pictk();});
 
             } else if( mytab.getActiveTabIndex() === 3){
 
-                var ref = window.open( 'http://twgverify.asolllc.net/survey.aspx?id='+user_data.GUID, '_blank', 'EnableViewPortScale=yes' );
+                var ref = window.open( 'http://verifyimages.azurewebsites.net/survey.aspx?id='+user_data.GUID, '_blank', 'EnableViewPortScale=yes' );
                 ref.addEventListener( 'loadstart', function () { } );
 
             } else if( mytab.getActiveTabIndex() === 0){
@@ -103,10 +137,12 @@ var app = {
     },
     pictk:function(){
         cameraOptions = {
-            quality: 90,
+            quality: 60,
             destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: false,
+            targetWidth: 512,
+            targetHeight: 512,
             encodingType: Camera.EncodingType.JPEG,
             saveToPhotoAlbum: false
         };
@@ -147,8 +183,8 @@ var app = {
             ons.notification.alert({message: 'Error: '+er, title: 'Error', buttonLabel: 'OK', animation: 'default'});
         };
         // upload URL change here
-        var upload_uri = "http://demo3.inheritedarts.com/geofence/upload.php";
-        var upload_path = "http://demo3.inheritedarts.com/geofence/uploads/";
+        var upload_uri = "http://posverify.com/geofence/upload.php";
+        var upload_path = "http://posverify.com/geofence/uploads/";
         var img_name = "img_"+Math.floor(Math.random()*10)+(new Date().getTime())+".jpg";
         // GET data 
         upload_uri = upload_uri + "?imgname="+encodeURIComponent(img_name)+"&lat="+encodeURIComponent(lastLocationData.geofenceLatitude)+"&lng="+encodeURIComponent(lastLocationData.geofenceLongitude)+"&guid="+encodeURIComponent(user_data.GUID)+"&locationid="+encodeURIComponent(lastLocationData.locationId)+"&geofenceid="+encodeURIComponent(lastLocationData.id);
